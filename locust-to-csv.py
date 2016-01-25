@@ -1,5 +1,8 @@
 import re
 import csv
+import datetime
+
+now = datetime.datetime.now()
 
 #check for this line: "Percentage of the requests completed within given times"
 #after matching it, read the 2nd line down (ms results line)
@@ -39,7 +42,7 @@ def write_CSV_File():
 
 	    writer.writeheader()
 	    for key, value in data.iteritems():
-	    	writer.writerow({'endpoint': key, 'responseTime': value})
+	    	writer.writerow({'date': now.strftime("%Y-%m-%d-%H-%M"), 'endpoint': key, 'responseTime': value})
 
 convert_to_CSV()
 write_CSV_File()
